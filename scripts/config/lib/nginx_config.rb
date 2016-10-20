@@ -79,6 +79,8 @@ class NginxConfig
     nameservers << [DEFAULT[:resolver]] unless nameservers.empty?
     json["resolver"] = nameservers.join(" ")
 
+    json["prerender"] ||= nil
+
     json.each do |key, value|
       self.class.send(:define_method, key) { value }
     end
