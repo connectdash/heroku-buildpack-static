@@ -2,7 +2,7 @@ location @prerender {
   proxy_set_header X-Prerender-Token <%= prerender['token'] %>;
   set $prerender 0;
 
-  if ($http_user_agent ~* "baiduspider|twitterbot|facebookexternalhit|Google.*snippet|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator") {
+  if ($http_user_agent ~* "googlebot|Yahoo! Slurp|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest/0.|developers.google.com/+/web/snippet|slackbot|vkShare|W3C_Validator|redditbot|Applebot|WhatsApp|flipboard|tumblr|bitlybot|SkypeUriPreview|nuzzel|Discordbot|Google Page Speed|Qwantify|pinterestbot|Bitrix link preview|XING-contenttabreceiver|Chrome-Lighthouse|TelegramBot") {
     set $prerender 1;
   }
   if ($args ~ "_escaped_fragment_") {
