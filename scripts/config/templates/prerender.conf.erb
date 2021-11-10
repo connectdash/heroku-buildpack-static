@@ -29,7 +29,6 @@ location @prerender {
     <% end %>
     
     proxy_pass $prerender$request_uri;
-    proxy_ssl_name $host;
     proxy_ssl_server_name on;
   }
   if ($prerender = 0) {
