@@ -28,7 +28,7 @@ location @prerender {
     rewrite .* /$scheme://$host$prefix$request_uri? break;
   <% end %>
     
-    proxy_pass backend; 
+    proxy_pass $scheme://backend; 
   }
   if ($prerender = 0) {
     rewrite .* /index.html break;
