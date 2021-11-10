@@ -27,7 +27,11 @@ location @prerender {
     <% else %>
       rewrite .* /$scheme://$host$request_uri? break;
     <% end %>
+    
     proxy_pass $prerender$request_uri;
+    proxy_set_header Host $host;
+    proxy_ssl_name $host;
+    proxy_ssl_server_name on;
   }
   if ($prerender = 0) {
     rewrite .* /index.html break;
