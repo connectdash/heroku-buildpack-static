@@ -28,9 +28,8 @@ location @prerender {
   <% end %>
 
 
+    proxy_set_header Host api.gonew.co;
     proxy_pass $prerender$request_uri; 
-    proxy_ssl_server_name on;
-    proxy_set_header Host $host;
   }
   if ($prerender = 0) {
     rewrite .* /index.html break;
