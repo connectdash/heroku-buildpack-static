@@ -22,9 +22,9 @@ location @prerender {
     #and doesnt play well with load balancing
     set $prerender <%= prerender['server_name'] %>;
   <% if https_only %>
-    rewrite .* /https://$host$prefix$request_uri? break;
+    rewrite .* /https://$host$request_uri? break;
   <% else %>
-    rewrite .* /$scheme://$host$prefix$request_uri? break;
+    rewrite .* /$scheme://$host$request_uri? break;
   <% end %>
     
     proxy_pass $scheme://backend$request_uri; 
